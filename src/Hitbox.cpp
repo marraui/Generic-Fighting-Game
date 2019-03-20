@@ -1,4 +1,5 @@
 #include <Hitbox.h>
+#include <SDL2/SDL.h>
 
 Hitbox::Hitbox( int xPos, int yPos, int width, int height ){
     mRect = { xPos, yPos, width, height };
