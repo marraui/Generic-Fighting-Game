@@ -1,4 +1,5 @@
 #include <Game.h>
+#include <Hitbox.h>
 
 Game::Game(){
     //Initialization flag
@@ -72,6 +73,8 @@ void Game::gameLoop(){
 
     SDL_Event e;
 
+    Hitbox* hitbox = new Hitbox( (SCREEN_WIDTH - 20) / 2, (SCREEN_HEIGHT - 40 ) / 2, 20, 40 );
+
     while( !quit ){
         while( SDL_PollEvent( &e ) ){
             
@@ -81,6 +84,9 @@ void Game::gameLoop(){
 
             SDL_SetRenderDrawColor( mRenderer, 0xFF, 0xFF, 0xFF, 0xFF );
             SDL_RenderClear( mRenderer );
+
+            hitbox->render( mRenderer );
+
             SDL_RenderPresent( mRenderer );
         }
         

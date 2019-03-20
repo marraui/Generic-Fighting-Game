@@ -5,12 +5,6 @@
 #include <SDL2/SDL_image.h>
 
 class Game{
-    public:
-        Game();
-        ~Game();
-
-        void gameLoop();
-
     private:
         const int SCREEN_WIDTH = 640;
         const int SCREEN_HEIGHT = 480;
@@ -18,7 +12,11 @@ class Game{
         SDL_Window* mWindow;
         SDL_Renderer* mRenderer;
 
+    public:
+        Game();
+        ~Game();
 
+        void gameLoop();
 
 };
 
