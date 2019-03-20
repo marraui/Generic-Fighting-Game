@@ -66,3 +66,24 @@ Game::~Game(){
     IMG_Quit();
 	SDL_Quit();
 }
+
+void Game::gameLoop(){
+    bool quit = false;
+
+    SDL_Event e;
+
+    while( !quit ){
+        while( SDL_PollEvent( &e ) ){
+            
+            if( e.type == SDL_QUIT ){
+                quit = true;
+            }
+
+            SDL_SetRenderDrawColor( mRenderer, 0xFF, 0xFF, 0xFF, 0xFF );
+            SDL_RenderClear( mRenderer );
+            SDL_RenderPresent( mRenderer );
+        }
+        
+    }
+    
+}

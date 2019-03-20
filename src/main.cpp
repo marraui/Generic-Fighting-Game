@@ -9,5 +9,9 @@ int main(int argc, char* args[] ) {
 
     printf( "Game initialized succesfully!\n");
 
+    printf( "Entering game loop\n" );
+
+    game->gameLoop();
+
     delete game;
 }
