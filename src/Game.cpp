@@ -1,6 +1,7 @@
 #include <Game.h>
 #include <Hitbox.h>
 #include <Character.h>
+#include <InputKeyboard.h>
 
 Game::Game(){
     //Initialization flag
@@ -77,6 +78,9 @@ void Game::gameLoop(){
 
     Character* character = new Character( (SCREEN_WIDTH - 20) / 2, (SCREEN_HEIGHT - 40 ) / 2, 40, 80 );
 
+	InputKeyboard* inputKeyboard = new InputKeyboard();
+	bool firstFrame = true;
+
     while( !quit ){
         while( SDL_PollEvent( &e ) ){
             
@@ -84,14 +88,26 @@ void Game::gameLoop(){
                 quit = true;
             }
 
-            SDL_SetRenderDrawColor( mRenderer, 0xFF, 0xFF, 0xFF, 0xFF );
-            SDL_RenderClear( mRenderer );
-
-            character->render( mRenderer );
-
-            SDL_RenderPresent( mRenderer );
         }
+		
+		if( firstFrame ){
+			inputKeyboard->Initialize();
+			firstFrame = false;
+		}
+		else{
+			inputKeyboard->Update();
+		}
         
+		SDL_SetRenderDrawColor( mRenderer, 0xFF, 0xFF, 0xFF, 0xFF );
+		SDL_RenderClear( mRenderer );
+
+		character->handleInput( inputKeyboard );
+
+		character->move();
+
+		character->render( mRenderer );
+
+		SDL_RenderPresent( mRenderer );
     }
     
 }

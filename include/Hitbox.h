@@ -10,7 +10,7 @@ private:
 public:
     Hitbox(int xPos, int yPos, int width, int height);
     ~Hitbox();
-    void render( SDL_Renderer* renderer );
+    void render( SDL_Renderer* renderer, int relativeX = 0, int relativeY = 0 );
 };
 
 
