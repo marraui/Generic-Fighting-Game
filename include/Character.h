@@ -10,14 +10,19 @@ class Character
 {
 private:
     const int X_SPEED = 20;
-    const int Y_SPEED = 20;
+    const int Y_SPEED = 10;
 
     int mPosX;
     int mPosY;
+
+
     float mSpeedX;
     float mSpeedY;
+
+
     int mWidth;
     int mHeight;
+
     Hitbox* mHitbox;
 
 public:
@@ -26,13 +31,15 @@ public:
 
     void render( SDL_Renderer* renderer );
 
-    void handleInput( InputKeyboard* inputKeyboard );
+    void handleInput( InputKeyboard* inputKeyboard, Stage* stage );
 
     void move( Stage* stage );
 
     int getSolidWidth();
 
     int getSolidHeight();
+
+    bool isAirborne( Stage* stage );
 };
 
 

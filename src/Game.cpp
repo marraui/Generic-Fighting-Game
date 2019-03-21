@@ -102,7 +102,7 @@ void Game::gameLoop(){
 		SDL_SetRenderDrawColor( mRenderer, 0xFF, 0xFF, 0xFF, 0xFF );
 		SDL_RenderClear( mRenderer );
 
-		character->handleInput( inputKeyboard );
+		character->handleInput( inputKeyboard , stage);
 
 		character->move( stage );
 
