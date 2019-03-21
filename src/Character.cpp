@@ -1,5 +1,6 @@
 #include <Character.h>
 #include <SDL2/SDL.h>
+#include <algorithm>
 
 Character::Character( int posX, int posY, int width, int height ){
     mPosX = posX;
@@ -34,7 +35,24 @@ void Character::handleInput( InputKeyboard* inputKeyboard ){
     }
 }
 
-void Character::move(){
-    mPosX += mSpeedX;
-    mPosX += mSpeedY;
+void Character::move( Stage* stage){
+    if ( stage->getFloorLevel() - getSolidHeight() == mPosY + mHitbox->getPosY() ){
+        mSpeedY = 0;
+    }
+    else{
+        mSpeedY += stage->getGravity();
+    }
+
+    mPosX += (int)mSpeedX;
+    mPosY += (int)mSpeedY;
+
+    mPosY = std::min( mPosY + (int)mSpeedY, stage->getFloorLevel() - getSolidHeight() );
+}
+
+int Character::getSolidWidth(){
+    return mHitbox->getWidth();
+}
+
+int Character::getSolidHeight(){
+    return mHitbox->getHeight();
 }

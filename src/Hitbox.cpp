@@ -21,3 +21,19 @@ void Hitbox::render( SDL_Renderer* renderer, int relativeX, int relativeY ){
     SDL_RenderDrawRect( renderer, &rectToRender );
 
 }
+
+int Hitbox::getWidth(){
+    return mRect.w;
+}
+
+int Hitbox::getHeight(){
+    return mRect.h;
+}
+
+int Hitbox::getPosX(){
+    return mRect.x;
+}
+
+int Hitbox::getPosY(){
+    return mRect.y;
+}

@@ -77,6 +77,7 @@ void Game::gameLoop(){
     SDL_Event e;
 
     Character* character = new Character( (SCREEN_WIDTH - 20) / 2, (SCREEN_HEIGHT - 40 ) / 2, 40, 80 );
+	Stage* stage = new Stage();
 
 	InputKeyboard* inputKeyboard = new InputKeyboard();
 	bool firstFrame = true;
@@ -103,7 +104,7 @@ void Game::gameLoop(){
 
 		character->handleInput( inputKeyboard );
 
-		character->move();
+		character->move( stage );
 
 		character->render( mRenderer );
 

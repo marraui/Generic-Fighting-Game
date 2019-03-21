@@ -4,6 +4,7 @@
 #include <SDL2/SDL.h>
 #include <Hitbox.h>
 #include <InputKeyboard.h>
+#include <Stage.h>
 
 class Character
 {
@@ -13,8 +14,8 @@ private:
 
     int mPosX;
     int mPosY;
-    int mSpeedX;
-    int mSpeedY;
+    float mSpeedX;
+    float mSpeedY;
     int mWidth;
     int mHeight;
     Hitbox* mHitbox;
@@ -27,7 +28,11 @@ public:
 
     void handleInput( InputKeyboard* inputKeyboard );
 
-    void move();
+    void move( Stage* stage );
+
+    int getSolidWidth();
+
+    int getSolidHeight();
 };
 
 
